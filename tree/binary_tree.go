@@ -7,7 +7,7 @@ import (
 
 type Node struct {
 	Value       interface{}
-	left, right *Node
+	Left, Right *Node
 }
 
 func (node *Node) Print() {
@@ -23,3 +23,39 @@ func (node *Node) Set(v interface{}) error {
 	return nil
 }
 
+func (node *Node) POrder() {
+	if node == nil {
+		return
+	}
+	fmt.Println(node.Value)
+	node.Left.POrder()
+	node.Right.POrder()
+}
+
+func (node *Node) MOrder() {
+	if node == nil {
+		return
+	}
+	node.Left.POrder()
+	fmt.Println(node.Value)
+	node.Right.POrder()
+}
+
+func (node *Node) BOrder() {
+	if node == nil {
+		return
+	}
+	node.Left.POrder()
+	node.Right.POrder()
+	fmt.Println(node.Value)
+}
+
+func (node *Node) LOrder() {
+	if node == nil {
+		return
+	}
+	fmt.Println(node.Value)
+	node.Left.POrder()
+	node.Right.POrder()
+
+}
